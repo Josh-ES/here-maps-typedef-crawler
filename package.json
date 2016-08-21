@@ -1,0 +1,36 @@
+{
+  "name": "here-maps-documentation-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib",
+    "watch": "babel src -d lib --watch"
+  },
+  "keywords": [
+    "here",
+    "maps",
+    "heremaps",
+    "documentation",
+    "crawler",
+    "crawl"
+  ],
+  "author": "Joshua Efiong <joshefiong@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.13.2"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "cheerio": "^0.20.0",
+    "commander": "^2.9.0",
+    "handlebars": "^4.0.5",
+    "lodash.assignin": "^4.2.0",
+    "request": "^2.74.0"
+  },
+  "bin": {
+    "crawl": "lib/crawl.js"
+  }
+}

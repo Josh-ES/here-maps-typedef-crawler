@@ -1,0 +1,28 @@
+/**
+{{#if baseDetail}} * {{{baseDetail}}}
+{{/if}}{{#each properties}} * @property {{name}} {{{bracketedType}}} - {{{description}}}
+{{/each}}
+ */
+export {{type}} {{name}}{{#if base}} extends {{base}}{{/if}}{{#if baseInterface}} implements {{baseInterface}}{{/if}} {
+{{#each enumProps}}{{#if description}}  /** {{{description}}} */
+{{/if}}  {{name}},
+{{/each}}{{#if constructorParams}}  /**
+   * Constructor
+{{#each constructorParams}}   * @param {{name}} {{{bracketedType}}}{{#if descriptor}} - {{{descriptor}}}{{/if}}
+{{/each}}
+   */
+  constructor({{#each constructorParams}}{{name}}{{#if optional}}?{{/if}}: {{{type}}}{{#unless @last}}, {{/unless}}{{/each}});
+{{/if}}{{#each methods}}
+  /**
+   * {{{description}}}
+{{#each params}}   * @param {{name}} {{{bracketedType}}}{{#if descriptor}} - {{{descriptor}}}{{/if}}
+{{/each}}
+{{#each returns}}   * @returns {{{bracketedType}}}{{#if descriptor}} - {{{descriptor}}}{{/if}}
+{{/each}}
+   */
+  {{#if static}}static {{/if}}{{name}}({{#each params}}{{name}}{{#if optional}}?{{/if}}: {{{type}}}{{#unless @last}}, {{/unless}}{{/each}}){{#each returns}}: {{{type}}}{{/each}}{{#unless returns}}: void{{/unless}};
+{{/each}}{{#if properties}}{{#if methods}}
+{{/if}}{{/if}}{{#if properties}}{{#each properties}}  {{#if static}}static {{/if}}{{name}}{{#if optional}}?{{/if}}: {{{type}}};
+{{/each}}
+{{/if}}
+}
